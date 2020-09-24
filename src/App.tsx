@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+import Header from './components/Header';
+import MenuMobile from './components/MenuMobile';
+import Routes from './routes';
+
+import GlobalStyles from './styles/global';
+
+const App: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(false);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header setIsVisible={setIsVisible} />
+      <MenuMobile setIsVisible={setIsVisible} isVisible={isVisible} />
+      <Routes />
+      <GlobalStyles />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
