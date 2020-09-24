@@ -24,7 +24,10 @@ export const Container = styled.div<ContainerProps>`
   z-index: 9999999;
   background: var(--color-dark);
 
+  transition: animation 0.2s;
+
   animation: ${appearFromTop} 1s;
+  display: ${props => (props.isVisible ? 'initial' : 'none')};
 
   header {
     width: 100%;

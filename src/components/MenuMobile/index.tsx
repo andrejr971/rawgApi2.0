@@ -27,6 +27,9 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ isVisible, setIsVisible }) => {
             <Link to="/">Store</Link>
           </li>
           <li>
+            <Link to="/">About</Link>
+          </li>
+          <li>
             <Link to="/">Search</Link>
           </li>
         </ul>

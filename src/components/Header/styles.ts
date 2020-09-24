@@ -15,6 +15,10 @@ export const Container = styled.header<ContainerProps>`
 
   transition: background-color 0.3s;
   background: ${props => (props.isColor ? 'rgba(0, 0, 0, 0.8)' : 'none')};
+
+  @media (max-width: 500px) {
+    padding: 10px;
+  }
 `;
 
 export const Content = styled.div`

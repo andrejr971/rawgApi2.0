@@ -23,12 +23,12 @@ interface GenresProps {
   image_background: string;
 }
 
-interface GamesProps {
+export interface GamesProps {
   id: number;
   name: string;
   slug: string;
   description_raw: string;
-  description: React.ReactNode;
+  description: string;
   background_image: string;
   rating_top: number;
   released: Date;
@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
     {} as GamesProps,
   );
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [page, setPage] = useState(1);
 
@@ -110,7 +110,7 @@ const Dashboard: React.FC = () => {
                 </span>
               </div>
               <p>{`${spotlightGame.description_raw?.substr(0, 150)} ...`}</p>
-              <Link to="/">See more</Link>
+              <Link to={`/game/${spotlightGame.slug}`}>See more</Link>
             </ContentBanner>
           </Banner>
 

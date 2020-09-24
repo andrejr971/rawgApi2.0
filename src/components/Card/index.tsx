@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
+import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import { Container, ImageContent, Description, List } from './styles';
@@ -29,10 +30,23 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ game }) => {
+  const [isPlay, setIsPlay] = useState(false);
+
+  const handlePlayVideo = useCallback(() => {
+    setIsPlay(!isPlay);
+  }, [isPlay]);
+
   return (
-    <Container>
+    <Container
+      onMouseEnter={handlePlayVideo}
+      onMouseLeave={() => setIsPlay(false)}
+    >
       <ImageContent>
-        <img src={game.background_image} alt={game.slug} />
+        {!isPlay ? (
+          <img src={game.background_image} alt={game.slug} />
+        ) : (
+          <video src={game.clip.clip} autoPlay loop muted />
+        )}
       </ImageContent>
 
       <Description>
@@ -54,10 +68,14 @@ const Card: React.FC<CardProps> = ({ game }) => {
               ))}
             </div>
           </li>
-          <li>
+          {/* <li>
             <strong>Chart:</strong>
             <span>{`#${game.rating_top} Top ${new Date().getFullYear()}`}</span>
-          </li>
+          </li> */}
+          <Link to={`/game/${game.slug}`}>
+            See more
+            <FiArrowRight />
+          </Link>
         </List>
       </Description>
     </Container>

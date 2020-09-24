@@ -30,6 +30,12 @@ export const ImageContent = styled.div`
     object-fit: cover;
     border-radius: 10px 10px 0 0;
   }
+
+  video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+  }
 `;
 
 export const Description = styled.div`
@@ -50,7 +56,7 @@ export const Description = styled.div`
 
 export const List = styled.ul`
   width: 100%;
-  margin-top: 10px;
+
   list-style: none;
   display: none;
   flex-direction: column;
@@ -98,6 +104,32 @@ export const List = styled.ul`
 
     & + li {
       border-top: 1px solid var(--color-secundary);
+    }
+  }
+
+  > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+
+    width: 100%;
+    border-radius: 10px;
+    background: var(--color-secundary);
+    border: 0;
+
+    color: var(--color);
+    margin-top: 5px;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+
+    svg {
+      font-size: 20px;
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
   }
 `;
