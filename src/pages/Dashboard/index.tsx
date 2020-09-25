@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -47,12 +47,16 @@ const Dashboard: React.FC = () => {
     {} as GamesProps,
   );
 
+  const { search } = useLocation();
+  const history = useHistory();
+
   const [loading, setLoading] = useState(true);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Number(search.split('=')[1]) || 1);
 
   const loadPage = useCallback(() => {
     setLoading(true);
+    window.scrollTo(0, 0);
 
     api
       .get('games', {
@@ -80,11 +84,13 @@ const Dashboard: React.FC = () => {
     if (page === 1) return;
 
     setPage(page - 1);
-  }, [page]);
+    history.push(`?page=${page - 1}`);
+  }, [page, history]);
 
   const handleNextPage = useCallback(() => {
     setPage(page + 1);
-  }, [page]);
+    history.push(`?page=${page + 1}`);
+  }, [page, history]);
 
   return (
     <Container>

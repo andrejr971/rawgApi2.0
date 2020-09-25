@@ -44,20 +44,22 @@ const Card: React.FC<CardProps> = ({ game }) => {
       <ImageContent>
         {!isPlay ? (
           <img src={game.background_image} alt={game.slug} />
+        ) : game.clip === null ? (
+          <img src={game.background_image} alt={game.slug} />
         ) : (
           <video src={game.clip.clip} autoPlay loop muted />
         )}
       </ImageContent>
 
       <Description>
-        <Link to="/">{game.name}</Link>
+        <Link to={`/game/${game.slug}`}>{game.name}</Link>
 
         <List>
           <li>
             <strong>Released:</strong>
             <span>{game.released}</span>
           </li>
-          <li>
+          {/* <li>
             <strong>Genres:</strong>
             <div>
               {game.genres.map((genre, index) => (
@@ -67,11 +69,11 @@ const Card: React.FC<CardProps> = ({ game }) => {
                 </Link>
               ))}
             </div>
-          </li>
-          {/* <li>
+          </li> */}
+          <li>
             <strong>Chart:</strong>
             <span>{`#${game.rating_top} Top ${new Date().getFullYear()}`}</span>
-          </li> */}
+          </li>
           <Link to={`/game/${game.slug}`}>
             See more
             <FiArrowRight />
