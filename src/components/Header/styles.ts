@@ -114,3 +114,50 @@ export const ToggleButton = styled.button`
     display: flex;
   }
 `;
+
+export const Search = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  div {
+    width: 100%;
+    max-width: 300px;
+    height: 40px;
+    margin-bottom: 4px;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color);
+    background: var(--color-dark);
+    border-color: var(--color-active);
+
+    input {
+      font-size: 17px;
+      flex: 1;
+      color: var(--color);
+      background: transparent;
+      border: 0;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid transparent;
+
+      svg {
+        font-size: 22px;
+      }
+
+      color: inherit;
+    }
+  }
+`;

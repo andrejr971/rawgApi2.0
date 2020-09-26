@@ -45,7 +45,9 @@
     ],
     "camelcase": "off",
     "react/prop-types": "off",
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "no-unused-expressions": "off",
+    "jsx-a11y/no-autofocus": "off"
   },
   "settings": {
     "import/resolver": {
