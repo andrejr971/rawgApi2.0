@@ -44,6 +44,7 @@ const Header: React.FC<HeaderProps> = ({ setIsVisible }) => {
   });
 
   const history = useHistory();
+  const { pathname, search } = useLocation();
 
   const handleSearch = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -69,8 +70,6 @@ const Header: React.FC<HeaderProps> = ({ setIsVisible }) => {
     return match ? 'active' : '';
   };
 
-  const { pathname } = useLocation();
-
   const handleVisibleSearch = useCallback(() => {
     if (isVisibleSearch && pathname === '/search') {
       setInputValue('');
@@ -79,6 +78,12 @@ const Header: React.FC<HeaderProps> = ({ setIsVisible }) => {
 
     setIsVisibleSearch(!isVisibleSearch);
   }, [isVisibleSearch, history, pathname]);
+
+  useEffect(() => {
+    if (search.split('=')[1] === '') {
+      history.push('/');
+    }
+  }, [search, history]);
 
   return (
     <Container isColor={isColor}>
